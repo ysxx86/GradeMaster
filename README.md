@@ -1,5 +1,5 @@
 # 成绩大师 (GradeMaster)
-
+直达：https://ysxx86.github.io/GradeMaster/
 一个基于HTML+JS+CSS开发的中文网页成绩分析应用，采用iOS风格设计。
 
 ## 功能特点
