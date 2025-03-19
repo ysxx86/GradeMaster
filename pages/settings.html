@@ -82,9 +82,9 @@
                 </div>
                 <div class="ios-list-text">
                     <div class="ios-list-title">联系我们</div>
-                    <div class="ios-list-subtitle">support@grademaster.com</div>
+                    <div class="ios-list-subtitle">开发者：青柠半夏</div>
                 </div>
-                <div class="ios-list-chevron">
+                <div class="ios-list-chevron" id="contact-us">
                     <i class="fas fa-chevron-right"></i>
                 </div>
             </div>
@@ -115,6 +115,31 @@
                     // 跳转到上传页面
                     window.parent.document.querySelector('[data-page="upload"]').click();
                 }
+            });
+            
+            // 联系我们
+            document.getElementById('contact-us').addEventListener('click', function() {
+                const modal = document.createElement('div');
+                modal.className = 'fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50';
+                modal.innerHTML = `
+                    <div class="bg-white rounded-2xl w-4/5 max-w-md p-5">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-lg font-semibold">联系我们</h3>
+                            <button class="text-gray-500 hover:text-gray-700" id="close-modal">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                        <div class="text-center">
+                            <p class="mb-3">开发者：青柠半夏</p>
+                            <img src="../img/vx.png" alt="微信二维码" class="w-48 h-48 mx-auto mb-3">
+                        </div>
+                    </div>
+                `;
+                document.body.appendChild(modal);
+                
+                document.getElementById('close-modal').addEventListener('click', function() {
+                    document.body.removeChild(modal);
+                });
             });
         });
     </script>
