@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>成绩大师 - 成绩分析</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div class="page-content">
+        <div class="flex justify-between items-center mb-6">
+            <h1 class="text-2xl font-bold">成绩分析</h1>
+        </div>
+
+        <div class="analysis-content">
+            <div class="grade-selection mb-6">
+                <label for="grade-select" class="ios-form-label">选择年级</label>
+                <select id="grade-select" class="grade-select">
+                    <option value="1">一年级</option>
+                    <option value="2">二年级</option>
+                    <option value="3">三年级</option>
+                    <option value="4">四年级</option>
+                    <option value="5">五年级</option>
+                    <option value="6">六年级</option>
+                </select>
+                <div class="text-xs text-gray-500 mt-2">
+                    <span>优秀标准：</span>
+                    <span class="grade-1-2">一二年级 ≥ 90分</span>
+                    <span class="grade-3-4">三四年级 ≥ 85分</span>
+                    <span class="grade-5-6">五六年级 ≥ 80分</span>
+                </div>
+            </div>
+
+            <div class="stats-section mb-6">
+                <h2 class="text-lg font-semibold mb-4">成绩统计</h2>
+                <div class="stats-grid grid grid-cols-2 gap-3">
+                    <div class="stat-card" id="total-students">
+                        <div class="stat-value">0</div>
+                        <div class="stat-label">总人数</div>
+                    </div>
+                    <div class="stat-card" id="average-score">
+                        <div class="stat-value">0.00</div>
+                        <div class="stat-label">平均分</div>
+                    </div>
+                    <div class="stat-card" id="excellent-count">
+                        <div class="stat-value">0</div>
+                        <div class="stat-label">优秀人数</div>
+                    </div>
+                    <div class="stat-card" id="pass-rate">
+                        <div class="stat-value">0%</div>
+                        <div class="stat-label">及格率</div>
+                    </div>
+                    <div class="stat-card" id="excellent-rate">
+                        <div class="stat-value">0%</div>
+                        <div class="stat-label">优秀率</div>
+                    </div>
+                    <div class="stat-card" id="fail-count">
+                        <div class="stat-value">0</div>
+                        <div class="stat-label">不及格人数</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="distribution-section mb-6">
+                <h2 class="text-lg font-semibold mb-4">分数段分布</h2>
+                <div class="distribution-chart">
+                    <div class="chart-title">分数段人数分布</div>
+                    <div class="bar-container">
+                        <!-- 柱状图将通过JS动态生成 -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-xs text-gray-500 mb-6">
+                <p>* 分数段: 0-59（不及格）、60-69（及格）、70-79（中等）、80-89（良好）、90-100（优秀）</p>
+            </div>
+
+            <button class="ios-button" id="export-report">
+                <i class="fas fa-download mr-2"></i>导出分析报告
+            </button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 根据年级选择显示对应的优秀标准说明
+            const gradeSelect = document.getElementById('grade-select');
+            
+            gradeSelect.addEventListener('change', function() {
+                updateGradeStandardVisibility(this.value);
+            });
+            
+            // 初始更新优秀标准显示
+            updateGradeStandardVisibility(gradeSelect.value);
+            
+            // 导出报告按钮
+            const exportBtn = document.getElementById('export-report');
+            if (exportBtn) {
+                exportBtn.addEventListener('click', function() {
+                    // 调用父页面中的导出报告功能
+                    window.parent.exportGradeReport();
+                });
+            }
+            
+            function updateGradeStandardVisibility(grade) {
+                const grade1_2 = document.querySelector('.grade-1-2');
+                const grade3_4 = document.querySelector('.grade-3-4');
+                const grade5_6 = document.querySelector('.grade-5-6');
+                
+                // 重置所有样式
+                [grade1_2, grade3_4, grade5_6].forEach(el => {
+                    if (el) el.style.fontWeight = 'normal';
+                });
+                
+                // 突出显示对应年级
+                if (grade == 1 || grade == 2) {
+                    if (grade1_2) grade1_2.style.fontWeight = 'bold';
+                } else if (grade == 3 || grade == 4) {
+                    if (grade3_4) grade3_4.style.fontWeight = 'bold';
+                } else if (grade == 5 || grade == 6) {
+                    if (grade5_6) grade5_6.style.fontWeight = 'bold';
+                }
+            }
+        });
+    </script>
+</body>
+</html>

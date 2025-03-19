@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>成绩大师 - GradeMaster</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- 引入SheetJS库用于Excel处理 -->
+    <script src="https://cdn.sheetjs.com/xlsx-0.19.3/package/dist/xlsx.full.min.js"></script>
+    <!-- 引入html2pdf库用于PDF导出 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body class="bg-gray-100">
+    <div class="app-container">
+        <!-- 设备框架 -->
+        <div class="device-frame">
+            <div class="device-status-bar">
+                <div class="status-bar-left">
+                    <span class="time">21:22</span>
+                </div>
+                <div class="status-bar-notch"></div>
+                <div class="status-bar-right">
+                    <span class="battery"><i class="fas fa-battery-full"></i></span>
+                    <span class="wifi"><i class="fas fa-wifi"></i></span>
+                    <span class="signal"><i class="fas fa-signal"></i></span>
+                </div>
+            </div>
+            
+            <!-- 主内容区 -->
+            <div class="device-content">
+                <div id="page-container">
+                    <iframe id="current-page" src="pages/home.html" frameborder="0"></iframe>
+                </div>
+                
+                <!-- iOS底部导航栏 -->
+                <div class="ios-tab-bar">
+                    <div class="tab-item active" data-page="home">
+                        <i class="fas fa-home"></i>
+                        <span>首页</span>
+                    </div>
+                    <div class="tab-item" data-page="analysis">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>分析</span>
+                    </div>
+                    <div class="tab-item" data-page="upload">
+                        <i class="fas fa-upload"></i>
+                        <span>上传</span>
+                    </div>
+                    <div class="tab-item" data-page="settings">
+                        <i class="fas fa-cog"></i>
+                        <span>设置</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 底部指示条 -->
+            <div class="device-home-indicator"></div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

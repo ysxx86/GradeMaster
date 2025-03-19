@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>成绩大师 - 设置</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div class="page-content">
+        <div class="flex justify-between items-center mb-6">
+            <h1 class="text-2xl font-bold">设置</h1>
+        </div>
+
+        <div class="ios-list mb-6">
+            <div class="ios-list-item">
+                <div class="ios-list-icon" style="background-color: #5AC8FA;">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="ios-list-text">
+                    <div class="ios-list-title">优秀分数线设置</div>
+                    <div class="ios-list-subtitle">按照年级自动设置</div>
+                </div>
+                <div class="ios-list-chevron">
+                    <i class="fas fa-toggle-on text-blue-500 text-xl"></i>
+                </div>
+            </div>
+            <div class="ios-list-item">
+                <div class="ios-list-icon" style="background-color: #FF2D55;">
+                    <i class="fas fa-chart-pie"></i>
+                </div>
+                <div class="ios-list-text">
+                    <div class="ios-list-title">数据展示方式</div>
+                    <div class="ios-list-subtitle">柱状图和饼图</div>
+                </div>
+                <div class="ios-list-chevron">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+            <div class="ios-list-item">
+                <div class="ios-list-icon" style="background-color: #4CD964;">
+                    <i class="fas fa-file-export"></i>
+                </div>
+                <div class="ios-list-text">
+                    <div class="ios-list-title">报告导出格式</div>
+                    <div class="ios-list-subtitle">PDF, Excel</div>
+                </div>
+                <div class="ios-list-chevron">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="ios-card mb-6">
+            <div class="ios-card-title">关于优秀分数线</div>
+            <div class="ios-card-content">
+                <p class="mb-2">系统默认按照教育部标准设置各年级的优秀分数线：</p>
+                <ul class="list-disc pl-5 mb-2">
+                    <li>一、二年级：90分及以上为优秀</li>
+                    <li>三、四年级：85分及以上为优秀</li>
+                    <li>五、六年级：80分及以上为优秀</li>
+                </ul>
+                <p>您可以在设置中自定义各年级的优秀分数线。</p>
+            </div>
+        </div>
+
+        <div class="ios-list">
+            <div class="ios-list-item">
+                <div class="ios-list-icon" style="background-color: #8E8E93;">
+                    <i class="fas fa-info-circle"></i>
+                </div>
+                <div class="ios-list-text">
+                    <div class="ios-list-title">应用版本</div>
+                    <div class="ios-list-subtitle">v1.0.0</div>
+                </div>
+            </div>
+            <div class="ios-list-item">
+                <div class="ios-list-icon" style="background-color: #8E8E93;">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <div class="ios-list-text">
+                    <div class="ios-list-title">联系我们</div>
+                    <div class="ios-list-subtitle">support@grademaster.com</div>
+                </div>
+                <div class="ios-list-chevron">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+            <div class="ios-list-item" id="clear-data">
+                <div class="ios-list-icon" style="background-color: #FF3B30;">
+                    <i class="fas fa-trash-alt"></i>
+                </div>
+                <div class="ios-list-text">
+                    <div class="ios-list-title">清除数据</div>
+                    <div class="ios-list-subtitle">删除所有已上传的成绩数据</div>
+                </div>
+                <div class="ios-list-chevron">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 清除数据按钮
+            document.getElementById('clear-data').addEventListener('click', function() {
+                if (confirm('确定要清除所有成绩数据吗？此操作不可恢复。')) {
+                    // 通知父页面清除数据
+                    window.parent.currentGradeData = null;
+                    alert('数据已清除！');
+                    
+                    // 跳转到上传页面
+                    window.parent.document.querySelector('[data-page="upload"]').click();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

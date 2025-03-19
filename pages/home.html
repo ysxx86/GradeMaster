@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>成绩大师 - 首页</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div class="page-content">
+        <div class="flex justify-between items-center mb-6">
+            <h1 class="text-2xl font-bold">成绩大师</h1>
+            <div class="text-sm text-gray-500">v1.0</div>
+        </div>
+
+        <div class="ios-card">
+            <div class="ios-card-title">欢迎使用成绩大师</div>
+            <div class="ios-card-content">
+                <p class="mb-2">成绩大师是一款专为教师设计的成绩分析工具，只需上传Excel成绩表，即可快速获取详细的成绩分析报告。</p>
+                <p>根据不同年级标准，轻松查看优秀率、及格率等关键数据。</p>
+            </div>
+        </div>
+
+        <div class="grade-section">
+            <h2 class="grade-header">快速开始</h2>
+            <div class="ios-list">
+                <div class="ios-list-item" id="go-to-upload">
+                    <div class="ios-list-icon" style="background-color: #007AFF;">
+                        <i class="fas fa-upload"></i>
+                    </div>
+                    <div class="ios-list-text">
+                        <div class="ios-list-title">上传成绩表</div>
+                        <div class="ios-list-subtitle">支持Excel格式(.xlsx, .xls)</div>
+                    </div>
+                    <div class="ios-list-chevron">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+                <div class="ios-list-item" id="go-to-analysis">
+                    <div class="ios-list-icon" style="background-color: #5856D6;">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <div class="ios-list-text">
+                        <div class="ios-list-title">查看分析报告</div>
+                        <div class="ios-list-subtitle">一键获取成绩统计与分布数据</div>
+                    </div>
+                    <div class="ios-list-chevron">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grade-section">
+            <h2 class="grade-header">年级优秀标准</h2>
+            <div class="ios-list">
+                <div class="ios-list-item">
+                    <div class="ios-list-icon" style="background-color: #FF9500;">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="ios-list-text">
+                        <div class="ios-list-title">一、二年级</div>
+                        <div class="ios-list-subtitle">90-100分为优秀</div>
+                    </div>
+                </div>
+                <div class="ios-list-item">
+                    <div class="ios-list-icon" style="background-color: #34C759;">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="ios-list-text">
+                        <div class="ios-list-title">三、四年级</div>
+                        <div class="ios-list-subtitle">85-100分为优秀</div>
+                    </div>
+                </div>
+                <div class="ios-list-item">
+                    <div class="ios-list-icon" style="background-color: #AF52DE;">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="ios-list-text">
+                        <div class="ios-list-title">五、六年级</div>
+                        <div class="ios-list-subtitle">80-100分为优秀</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 设置快速导航按钮事件
+            document.getElementById('go-to-upload').addEventListener('click', function() {
+                // 通知父页面切换到上传页面
+                window.parent.document.querySelector('[data-page="upload"]').click();
+            });
+            
+            document.getElementById('go-to-analysis').addEventListener('click', function() {
+                // 通知父页面切换到分析页面
+                window.parent.document.querySelector('[data-page="analysis"]').click();
+            });
+        });
+    </script>
+</body>
+</html>
