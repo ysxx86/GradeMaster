@@ -35,7 +35,14 @@ body {
     align-items: center;
 }
 
+/* 添加安全区域适配 */
+body {
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+}
+
 .device-frame {
+    height: 100vh;
+    height: -webkit-fill-available;
     width: var(--device-width);
     height: var(--device-height);
     background-color: var(--ios-background);
