@@ -31,13 +31,26 @@
             </div>
         </div>
 
+        <div class="grade-selector mb-6">
+            <label for="grade-select" class="block text-sm font-medium mb-2">选择年级</label>
+            <select id="grade-select" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <option value="">请选择年级</option>
+                <option value="1">一年级</option>
+                <option value="2">二年级</option>
+                <option value="3">三年级</option>
+                <option value="4">四年级</option>
+                <option value="5">五年级</option>
+                <option value="6">六年级</option>
+            </select>
+        </div>
+
         <div class="file-upload-area" id="drop-area">
             <div class="file-upload-icon">
                 <i class="fas fa-file-excel"></i>
             </div>
             <div class="file-upload-text">点击或拖拽上传成绩表</div>
             <div class="file-upload-subtext">支持 Excel 格式 (.xlsx, .xls)</div>
-            <input type="file" id="upload-file" class="upload-file-input" accept=".xlsx, .xls">
+            <input type="file" id="upload-file" class="upload-file-input" accept=".xlsx, .xls" disabled>
         </div>
 
         <div class="loader"></div>
@@ -79,9 +92,21 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // 初始化文件拖放区域
-            const dropArea = document.getElementById('drop-area');
+            // 初始化年级选择器
+            const gradeSelect = document.getElementById('grade-select');
             const fileInput = document.getElementById('upload-file');
+            const dropArea = document.getElementById('drop-area');
+
+            // 年级选择变化时启用/禁用上传
+            gradeSelect.addEventListener('change', function() {
+                if (this.value) {
+                    fileInput.disabled = false;
+                    dropArea.classList.remove('disabled');
+                } else {
+                    fileInput.disabled = true;
+                    dropArea.classList.add('disabled');
+                }
+            });
             
             // 阻止默认拖放行为
             ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
